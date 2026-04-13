@@ -446,7 +446,7 @@ class _MenuItem extends StatelessWidget {
         menuInfo: menuInfo,
         child: Text(
           element.title ?? '',
-          style: TextStyle(fontSize: element.fontSize, color: element.fontColor),
+          style: element.textStyle ?? TextStyle(fontSize: element.fontSize, color: element.fontColor),
           textScaler: const TextScaler.linear(1),
         ),
       );
@@ -496,15 +496,15 @@ class _MenuHeader extends StatelessWidget {
       // the correct text style set by _MenuItemScaffold.
       suffix: menuInfo.menu.suffix,
       prefix: Builder(
-            builder: (context) {
-              return _AnimatedChevron(
-                isExpanded: !menuInfo.isCollapsed,
-                duration: menuInfo.transitionDuration,
-                color: DefaultTextStyle.of(context).style.color!,
-                chevronSize: menuInfo.menu.chevronSize,
-              );
-            },
-          ),
+        builder: (context) {
+          return _AnimatedChevron(
+            isExpanded: !menuInfo.isCollapsed,
+            duration: menuInfo.transitionDuration,
+            color: DefaultTextStyle.of(context).style.color!,
+            chevronSize: menuInfo.menu.chevronSize,
+          );
+        },
+      ),
       child: Builder(builder: (context) {
         return AnimatedDefaultTextStyle(
           duration: menuInfo.transitionDuration,
@@ -513,7 +513,7 @@ class _MenuHeader extends StatelessWidget {
               ),
           child: Text(
             menuInfo.menu.title ?? '',
-            style: TextStyle(fontSize: menuInfo.menu.fontSize),
+            style: menuInfo.menu.textStyle ?? TextStyle(fontSize: menuInfo.menu.fontSize),
             textScaler: const TextScaler.linear(1),
           ),
         );

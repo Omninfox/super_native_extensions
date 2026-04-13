@@ -40,6 +40,7 @@ class MenuElement {
     this.title,
     this.fontSize,
     this.fontColor,
+    this.textStyle,
     this.subtitle,
     this.image,
     this.suffix,
@@ -48,6 +49,7 @@ class MenuElement {
   final String? title;
   final double? fontSize;
   final Color? fontColor;
+  final TextStyle? textStyle;
 
   final String? subtitle;
   final MenuImage? image;
@@ -140,6 +142,7 @@ class MenuAction extends MenuElement {
     super.fontSize,
     super.suffix,
     super.fontColor,
+    super.textStyle,
   });
 
   final VoidCallback callback;
